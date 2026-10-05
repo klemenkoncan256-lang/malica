@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="sl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Malica – Gimnazija Vič</title>
+<style>
+:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);
+--bg:#f6f5f1;--card:#fff;--text:#1d1d1b;--muted:#6b6a64;--accent:#2f7d4f;--line:#e2e0d8}
+html{scroll-padding-top:env(safe-area-inset-top,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#161715;--card:#202220;--text:#ecebe6;--muted:#9a998f;--accent:#6fcf97;--line:#33352f}}
+:root[data-theme="dark"]{--bg:#161715;--card:#202220;--text:#ecebe6;--muted:#9a998f;--accent:#6fcf97;--line:#33352f}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.45}
+main{max-width:640px;margin:0 auto;padding:20px 16px 40px}
+h1{font-size:1.4rem;margin:0}
+.sub{color:var(--muted);font-size:.9rem;margin:2px 0 16px}
+.day{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-bottom:10px}
+.day.today{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent)}
+.day h2{font-size:1rem;margin:0 0 6px;display:flex;justify-content:space-between;align-items:baseline}
+.day h2 small{color:var(--muted);font-weight:400}
+.day .badge{color:var(--accent);font-size:.75rem;font-weight:600}
+.day ul{margin:0;padding-left:18px}
+footer{margin-top:20px;color:var(--muted);font-size:.8rem}
+footer a{color:var(--accent)}
+</style>
+</head>
+<body>
+<main>
+<h1>Navadna malica</h1>
+<p class="sub" id="week"></p>
+<div id="list"></div>
+<footer>Neuradno. Vir: <a id="src" href="https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/">gimvic.org</a>. * živilo iz ekološke pridelave. Med odmori je sadje na hodnikih.</footer>
+</main>
+<script>
+// Fallback copy of this week's menu, used if menu.json can't be loaded.
+const FALLBACK={week:"jedilnik MALICA - 5. 10. - 9. 10. 2026",
+source:"https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-5.pdf",
+days:[
+{n:"Ponedeljek",d:"2026-10-05",items:["korenina s slanino in sezamom (NV 2 kos)","jog. napitek (nar., sadni)"]},
+{n:"Torek",d:"2026-10-06",items:["temna makovka (v, m)","zašinek, sir, list solate","skuta / jogurt","3. letnik: malica na ekskurziji za naročene"]},
+{n:"Sreda",d:"2026-10-07",items:["rezine mlečnega kruha *","različni namazi","jogurt / mleko","rezine ananasa"]},
+{n:"Četrtek",d:"2026-10-08",items:["temna štručka (v, m)","telečja hrenovka *","smuti"]},
+{n:"Petek",d:"2026-10-09",items:["focaccia","kepice mocarele","češnjev paradižnik","lučka"]}]};
+const esc=s=>String(s).replace(/[&<>]/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;"}[c]));
+const pad=n=>String(n).padStart(2,"0"),t=new Date();
+const today=`${t.getFullYear()}-${pad(t.getMonth()+1)}-${pad(t.getDate())}`;
+function show(m){
+ document.getElementById("week").textContent=m.week.replace(/^jedilnik MALICA\s*-\s*/i,"Teden ");
+ if(m.source)document.getElementById("src").href=m.source;
+ document.getElementById("list").innerHTML=m.days.map(x=>{
+  const dt=x.d?x.d.split("-").reverse().map(Number):null;
+  return `<section class="day${x.d===today?" today":""}"><h2><span>${esc(x.n)} ${x.d===today?'<span class="badge">DANES</span>':""}</span><small>${dt?dt[0]+". "+dt[1]+".":""}</small></h2><ul>${x.items.map(i=>`<li>${esc(i)}</li>`).join("")}</ul></section>`;}).join("");
+}
+show(FALLBACK);
+fetch("menu.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(m=>{if(m&&m.days&&m.days.length)show(m);}).catch(()=>{});
+</script>
+</body>
+</html>
