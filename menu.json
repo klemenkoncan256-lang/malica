@@ -2,10 +2,48 @@
   "week": "jedilnik MALICA - 5. 10. - 9. 10. 2026",
   "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-5.pdf",
   "days": [
-    {"n": "Ponedeljek", "d": "2026-10-05", "items": ["korenina s slanino in sezamom (NV 2 kos)", "jog. napitek (nar., sadni)"]},
-    {"n": "Torek", "d": "2026-10-06", "items": ["temna makovka (v, m)", "zašinek, sir, list solate", "skuta / jogurt", "3. letnik: malica na ekskurziji za naročene"]},
-    {"n": "Sreda", "d": "2026-10-07", "items": ["rezine mlečnega kruha *", "različni namazi", "jogurt / mleko", "rezine ananasa"]},
-    {"n": "Četrtek", "d": "2026-10-08", "items": ["temna štručka (v, m)", "telečja hrenovka *", "smuti"]},
-    {"n": "Petek", "d": "2026-10-09", "items": ["focaccia", "kepice mocarele", "češnjev paradižnik", "lučka"]}
+    {
+      "n": "Ponedeljek",
+      "d": "2026-10-05",
+      "items": [
+        "korenina s slan.in sezamom (NV 2kos)",
+        "jog.napitek (nar., sadni)"
+      ]
+    },
+    {
+      "n": "Torek",
+      "d": "2026-10-06",
+      "items": [
+        "temna makovka (v,m) zašinek, sir, list solate",
+        "skuta /jogurt",
+        "3.letnik malica na eksk za naroč. 3.letnik"
+      ]
+    },
+    {
+      "n": "Sreda",
+      "d": "2026-10-07",
+      "items": [
+        "rezine mlečnega kruha * različni namazi",
+        "jogurt /mleko",
+        "rezine ananasa"
+      ]
+    },
+    {
+      "n": "Četrtek",
+      "d": "2026-10-08",
+      "items": [
+        "temna štručka (v,m) telečja hrenovka * prosena",
+        "smuti"
+      ]
+    },
+    {
+      "n": "Petek",
+      "d": "2026-10-09",
+      "items": [
+        "focaccia kepice mocarele",
+        "češnjev paradižnik",
+        "lučka"
+      ]
+    }
   ]
 }
