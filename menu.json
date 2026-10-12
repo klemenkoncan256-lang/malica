@@ -1,48 +1,49 @@
 {
-  "week": "jedilnik MALICA - 5. 10. - 9. 10. 2026",
-  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-5.pdf",
+  "week": "jedilnik MALICA - 12. 10. - 16. 10. 2026",
+  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-12.pdf",
   "days": [
     {
       "n": "Ponedeljek",
-      "d": "2026-10-05",
+      "d": "2026-10-12",
       "items": [
-        "korenina s slan.in sezamom (NV 2kos)",
-        "jog.napitek (nar., sadni)"
+        "temna sirova štr. (v,m) kuhan pršut",
+        "rezne papriike",
+        "skuta/puding/jogurt"
       ]
     },
     {
       "n": "Torek",
-      "d": "2026-10-06",
+      "d": "2026-10-13",
       "items": [
-        "temna makovka (v,m) zašinek, sir, list solate",
-        "skuta /jogurt",
-        "3.letnik malica na eksk za naroč. 3.letnik"
+        "cimetova rolica (NV 2kos)",
+        "ŠVEDSKA mleko",
+        "teden Erasmus+"
       ]
     },
     {
       "n": "Sreda",
-      "d": "2026-10-07",
+      "d": "2026-10-14",
       "items": [
-        "rezine mlečnega kruha * različni namazi",
-        "jogurt /mleko",
-        "rezine ananasa"
+        "NEMČIJA BREZEL MIT KÄSE",
+        "teden Erasmus+ (presta s sirom)"
       ]
     },
     {
       "n": "Četrtek",
-      "d": "2026-10-08",
+      "d": "2026-10-15",
       "items": [
-        "temna štručka (v,m) telečja hrenovka * prosena",
-        "smuti"
+        "VARAŽDINSKI KLIPIČ",
+        "HRVAŠKA",
+        "teden Erasmus+ tekoči jogurt / smuti"
       ]
     },
     {
       "n": "Petek",
-      "d": "2026-10-09",
+      "d": "2026-10-16",
       "items": [
-        "focaccia kepice mocarele",
-        "češnjev paradižnik",
-        "lučka"
+        "PIZZA MARGHERITA (v,m) (pica s paradižnikom in sirom)",
+        "ITALIJA češnjev paradižnik",
+        "teden Erasmus+ (NV velika, N mala)"
       ]
     }
   ]
