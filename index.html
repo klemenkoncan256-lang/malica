@@ -61,6 +61,14 @@ th{font-weight:600;color:var(--muted);border-top:0}
 .tag{display:inline-block;background:var(--butter);color:#101828;border-radius:6px;padding:0 6px;font-size:.75rem;margin-left:4px}
 .plastic ul{padding-left:18px;margin:6px 0}
 .plastic li{margin:4px 0}
+.btn{font:inherit;font-size:.9rem;font-weight:600;padding:9px 14px;border-radius:10px;border:1.5px solid var(--text);background:transparent;color:var(--text);cursor:pointer}
+.btn:focus-visible{outline:3px solid var(--butter);outline-offset:2px}
+td input[type=checkbox]{width:20px;height:20px;accent-color:var(--hero)}
+.muted{color:var(--muted)}
+.sug{display:flex;gap:12px;align-items:flex-start;padding:14px 0;border-top:1px solid var(--rule);cursor:pointer}
+.sug input{flex:none;width:22px;height:22px;margin-top:2px;accent-color:var(--hero)}
+.sug b{font-weight:800}
+.sug .ln{display:block;margin:3px 0}
 @keyframes rise{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.hero{animation:none}}
 </style>
@@ -72,30 +80,32 @@ th{font-weight:600;color:var(--muted);border-top:0}
 <h2 class="weekhead" id="week"></h2>
 <div id="list"></div>
 <section class="plastic" id="plastic">
-<h2>Koliko plastike pojemo?</h2>
-<p class="lead">Ocena plastične embalaže, ki jo ta teden povzroči navadna malica.</p>
+<h2>Koliko plastike porabimo?</h2>
+<p class="lead">Ocena plastične embalaže, ki jo ta teden porabimo pri navadni malici.</p>
 <div class="controls">
-<label>Dijakov z navadno malico<input id="n" type="number" min="1" value="200" inputmode="numeric"></label>
+<label>Število dijakov z navadno malico<input id="n" type="number" min="1" value="200" inputmode="numeric"></label>
 <label>Šolskih tednov na leto<input id="w" type="number" min="1" value="36" inputmode="numeric"></label>
 </div>
 <p class="big" id="weekTotal"></p>
 <p id="yearTotal" class="lead"></p>
 <h3>Plastika po dnevih</h3>
 <div id="bars"></div>
-<h3>Kaj, če zamenjamo embalažo?</h3>
-<label for="share" class="small">Delež dijakov, ki preide na alternativo: <b id="shareOut">50 %</b></label>
-<input id="share" type="range" min="0" max="100" value="50">
-<p id="saving"></p>
-<h3>Embalaža in alternative</h3>
-<div class="tablewrap"><table><thead><tr><th>Jed</th><th>Embalaža</th><th>Plastika na porcijo</th><th>Alternativa</th></tr></thead><tbody id="rows"></tbody></table></div>
+<h3>Embalaža po jedeh</h3>
+<p class="small">Vsaka jed iz tedenskega jedilnika zgoraj z embalažo, ki jo ima.</p>
+<div class="tablewrap"><table><thead><tr><th>Dan in jed</th><th>Embalaža</th><th>Plastika na porcijo</th></tr></thead><tbody id="rows"></tbody></table></div>
 <p class="small" id="unmatched"></p>
+<h3>Predlogi za manj plastike</h3>
+<p class="small">To so naši predlogi in ne podatki iz jedilnika. Označi tiste, ki bi jih uvedli, in stran izračuna prihranek.</p>
+<p><button type="button" class="btn" id="all">Izberi vse predloge</button></p>
+<p id="saving"></p>
+<div id="sugs"></div>
 <h3>Metoda in viri</h3>
 <ul class="small">
-<li>Jedilnik se bere iz uradnega jedilnika šole (gimvic.org), samo navadna malica.</li>
+<li>Jedilnik se prebere iz uradnega jedilnika šole (gimvic.org); upoštevana je samo navadna malica.</li>
 <li>Predpostavka: vsak dijak dobi eno porcijo vsake jedi.</li>
-<li>Gramov plastike je za zdaj ocena (oznaka <span class="tag">ocena</span>). Prave vrednosti dobimo s tehtanjem embalaže in jih vpišemo v datoteko packaging.json.</li>
-<li>Letna številka = tedenska količina × število šolskih tednov. Praznikov in počitnic ne upošteva.</li>
-<li>Alternative niso vedno boljše: pri papirju ali bioplastiki je treba oceniti celoten vpliv (voda za pranje, prevoz, razgradnja). Dodajte vire, ki jih uporabite.</li>
+<li>Grami plastike so za zdaj ocene (oznaka <span class="tag">ocena</span>). Prave vrednosti dobimo s tehtanjem embalaže in jih vpišemo v datoteko packaging.json.</li>
+<li>Letna količina = tedenska količina × število šolskih tednov. Praznikov in počitnic ne upoštevamo.</li>
+<li>Alternative niso vedno boljše: pri papirju ali bioplastiki je treba oceniti celoten vpliv (voda za pranje, prevoz, razgradnja). Dodaj vire, ki jih uporabiš.</li>
 </ul>
 </section>
 <footer>Neuradno. Vir: <a id="src" href="https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/">gimvic.org</a>. * živilo iz ekološke pridelave. Med odmori je sadje na hodnikih.</footer>
@@ -118,7 +128,7 @@ const parts=d=>d?d.split("-").map(Number):null;
 const items=a=>a&&a.length?a.map(i=>`<li>${esc(i)}</li>`).join(""):'<li class="empty">Ni podatkov</li>';
 
 function show(m){
- CUR=m;
+ CUR=m;SEL.clear();
  const days=m.days;
  let idx=days.findIndex(x=>x.d===today),label="Danes";
  if(idx<0){idx=days.findIndex(x=>x.d>today);label="Naslednja malica";}
@@ -135,7 +145,7 @@ function show(m){
 }
 
 const PACK_FALLBACK=[
-{kw:["jog. napitek","jogurtov napitek"],item:"Jogurtov napitek",pack:"plastična steklenička ali lonček",g:10,measured:false,alt:"steklenice na povratnino ali točilnik z lastnim kozarcem",altSaves:1},
+{kw:["jog. napitek","jogurtov napitek"],item:"Jogurtov napitek",pack:"plastenka ali lonček",g:10,measured:false,alt:"povratne steklenice ali točilnik z lastnim kozarcem",altSaves:1},
 {kw:["skuta","jogurt"],item:"Jogurt / skuta",pack:"plastičen lonček",g:6,measured:false,alt:"večje embalaže ali lonček za večkratno uporabo",altSaves:1},
 {kw:["smuti"],item:"Smuti",pack:"plastičen kozarec s pokrovom",g:12,measured:false,alt:"kozarec za večkratno uporabo",altSaves:1},
 {kw:["namaz"],item:"Namazi",pack:"porcijska embalaža",g:3,measured:false,alt:"namaz v večji posodi, mazanje v kuhinji",altSaves:1},
@@ -145,23 +155,37 @@ const $=id=>document.getElementById(id);
 const nf=(x,d=1)=>x.toLocaleString("sl-SI",{maximumFractionDigits:d});
 const fmt=g=>g>=1000?nf(g/1000)+" kg":nf(g,0)+" g";
 const match=i=>PACK.find(r=>r.kw.some(k=>i.toLowerCase().includes(k)));
+const SEL=new Set();let LAST={};
+const skip=i=>/^\d+\.\s*letnik/i.test(i);
 function renderPlastic(){
- const n=Math.max(0,+$("n").value||0),w=Math.max(0,+$("w").value||0),share=+$("share").value/100;
- $("shareOut").textContent=Math.round(share*100)+" %";
- const days=CUR.days.map(d=>{const hits=d.items.map(i=>({i,r:match(i)})).filter(x=>x.r);return{d,hits,g:hits.reduce((s,x)=>s+x.r.g,0)};});
+ const n=Math.max(0,+$("n").value||0),w=Math.max(0,+$("w").value||0);
+ const days=CUR.days.map(d=>{const items=d.items.filter(i=>!skip(i)).map(i=>({i,r:match(i)}));return{d,items,g:items.reduce((s,x)=>s+(x.r?x.r.g:0),0)};});
  const perStudent=days.reduce((s,x)=>s+x.g,0),week=perStudent*n,year=week*w;
  $("weekTotal").textContent=fmt(week)+" na teden";
- $("yearTotal").textContent="Na leto: "+fmt(year)+" (približno "+nf(year/15,0)+" pol-litrskih PET steklenic, če štejemo 15 g na steklenico; ocena).";
+ $("yearTotal").textContent="Na leto: "+fmt(year)+" (približno "+nf(year/15,0)+" pollitrskih PET plastenk, če štejemo 15 g na plastenko; ocena).";
  const max=Math.max(...days.map(x=>x.g),1);
  $("bars").innerHTML=days.map(x=>`<div class="bar"><span>${esc(x.d.n)}</span><div class="track"><i style="width:${x.g/max*100}%"></i></div><b>${fmt(x.g*n)}</b></div>`).join("");
- const save=days.reduce((s,x)=>s+x.hits.reduce((a,h)=>a+h.r.g*(h.r.altSaves??1),0),0)*n*share;
- $("saving").innerHTML=`Če <b>${Math.round(share*100)} %</b> dijakov preide na alternativo, prihranimo <b>${fmt(save)}</b> plastike na teden in <b>${fmt(save*w)}</b> na leto.`;
- const seen=new Map();days.forEach(x=>x.hits.forEach(h=>seen.set(h.r.item,h.r)));
- $("rows").innerHTML=[...seen.values()].map(r=>`<tr><td>${esc(r.item)}</td><td>${esc(r.pack)}</td><td>${r.g} g${r.measured?"":'<span class="tag">ocena</span>'}</td><td>${esc(r.alt)}${r.tradeoff?'<br><span class="small">Slabost: '+esc(r.tradeoff)+'</span>':""}</td></tr>`).join("")||'<tr><td colspan="4">Ni znane embalaže za ta teden.</td></tr>';
- const un=[...new Set(days.flatMap(x=>x.d.items.filter(i=>!match(i))))];
- $("unmatched").textContent=un.length?"Jedi brez vpisane embalaže (dodajte jih v packaging.json): "+un.join(", ")+".":"";
+ $("rows").innerHTML=days.map(x=>x.items.map((h,ii)=>{
+  const name=(ii===0?"<b>"+esc(x.d.n)+"</b><br>":"")+esc(h.i);
+  return h.r?`<tr><td>${name}</td><td>${esc(h.r.pack)}</td><td>${h.r.g} g${h.r.measured?"":'<span class="tag">ocena</span>'}</td></tr>`
+   :`<tr><td>${name}</td><td class="muted">ni vpisano</td><td class="muted">–</td></tr>`;}).join("")).join("");
+ const un=[...new Set(days.flatMap(x=>x.items.filter(h=>!h.r).map(h=>h.i)))];
+ $("unmatched").textContent=un.length?"Jedi brez vpisane embalaže (dodaj jih v packaging.json): "+un.join(", ")+".":"";
+ const sug=new Map();
+ days.forEach(x=>x.items.forEach(h=>{if(!h.r)return;const e=sug.get(h.r.item)||{r:h.r,count:0,days:[]};e.count++;if(!e.days.includes(x.d.n))e.days.push(x.d.n);sug.set(h.r.item,e);}));
+ const list=[...sug.values()];
+ $("sugs").innerHTML=list.map(e=>{const r=e.r,k=r.item;
+  return `<label class="sug"><input type="checkbox" data-k="${esc(k)}" ${SEL.has(k)?"checked":""}><span><b>${esc(r.item)}</b> <span class="small">(${esc(e.days.join(", "))})</span><span class="ln">Predlog: ${esc(r.alt)}.</span><span class="ln small">Namesto: ${esc(r.pack)}. Prihranek: ${fmt(r.g*(r.altSaves??1)*e.count*n)} na teden.${r.tradeoff?" Pomanjkljivost: "+esc(r.tradeoff)+".":""}</span></span></label>`;}).join("")||'<p class="small">Za ta teden ni predlogov, ker ni vpisane embalaže.</p>';
+ LAST={list,n,w,week};updateSaving();
 }
-["n","w","share"].forEach(id=>$(id).addEventListener("input",renderPlastic));
+function updateSaving(){
+ const{list,n,w,week}=LAST;let save=0;
+ list.forEach(e=>{if(SEL.has(e.r.item))save+=e.r.g*(e.r.altSaves??1)*e.count*n;});
+ $("saving").innerHTML=SEL.size?`Z izbranimi predlogi prihranimo <b>${fmt(save)}</b> plastike na teden (${week?nf(save/week*100,0):0} % vse plastike) in <b>${fmt(save*w)}</b> na leto.`:"Še nobenega predloga nisi izbral.";
+}
+["n","w"].forEach(id=>$(id).addEventListener("input",renderPlastic));
+$("sugs").addEventListener("change",e=>{const c=e.target;if(c.dataset&&c.dataset.k){c.checked?SEL.add(c.dataset.k):SEL.delete(c.dataset.k);updateSaving();}});
+$("all").addEventListener("click",()=>{LAST.list.forEach(e=>SEL.add(e.r.item));renderPlastic();});
 show(FALLBACK);renderPlastic();
 fetch("menu.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(m=>{if(m&&m.days&&m.days.length)show(m);}).then(()=>renderPlastic()).catch(()=>{});
 fetch("packaging.json",{cache:"no-store"}).then(r=>r.ok?r.json():null).then(p=>{if(p&&p.rules&&p.rules.length){PACK=p.rules;renderPlastic();}}).catch(()=>{});
