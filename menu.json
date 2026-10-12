@@ -1,50 +1,10 @@
 {
-  "week": "jedilnik MALICA - 12. 10. - 16. 10. 2026",
-  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-12.pdf",
-  "days": [
-    {
-      "n": "Ponedeljek",
-      "d": "2026-10-12",
-      "items": [
-        "temna sirova štr. (v,m) kuhan pršut",
-        "rezne papriike",
-        "skuta/puding/jogurt"
-      ]
-    },
-    {
-      "n": "Torek",
-      "d": "2026-10-13",
-      "items": [
-        "cimetova rolica (NV 2kos)",
-        "ŠVEDSKA mleko",
-        "teden Erasmus+"
-      ]
-    },
-    {
-      "n": "Sreda",
-      "d": "2026-10-14",
-      "items": [
-        "NEMČIJA BREZEL MIT KÄSE",
-        "teden Erasmus+ (presta s sirom)"
-      ]
-    },
-    {
-      "n": "Četrtek",
-      "d": "2026-10-15",
-      "items": [
-        "VARAŽDINSKI KLIPIČ",
-        "HRVAŠKA",
-        "teden Erasmus+ tekoči jogurt / smuti"
-      ]
-    },
-    {
-      "n": "Petek",
-      "d": "2026-10-16",
-      "items": [
-        "PIZZA MARGHERITA (v,m) (pica s paradižnikom in sirom)",
-        "ITALIJA češnjev paradižnik",
-        "teden Erasmus+ (NV velika, N mala)"
-      ]
-    }
+  "opomba": "g = gramov plastike na eno porcijo. measured:false pomeni oceno. Ko stehtaš pravo embalažo, vpiši število in nastavi measured:true.",
+  "rules": [
+    {"kw": ["jog. napitek", "jogurtov napitek"], "item": "Jogurtov napitek", "pack": "plastična steklenička ali lonček", "g": 10, "measured": false, "alt": "steklenice na povratnino ali točilnik z lastnim kozarcem", "altSaves": 1, "tradeoff": "več pranja in organizacije vračanja"},
+    {"kw": ["skuta", "jogurt"], "item": "Jogurt / skuta", "pack": "plastičen lonček", "g": 6, "measured": false, "alt": "večje embalaže ali lonček za večkratno uporabo", "altSaves": 1, "tradeoff": "potrebno razdeljevanje v jedilnici"},
+    {"kw": ["smuti"], "item": "Smuti", "pack": "plastičen kozarec s pokrovom", "g": 12, "measured": false, "alt": "kozarec za večkratno uporabo", "altSaves": 1, "tradeoff": "dijaki morajo prinesti ali vrniti kozarec"},
+    {"kw": ["namaz"], "item": "Namazi", "pack": "porcijska embalaža", "g": 3, "measured": false, "alt": "namaz v večji posodi, mazanje v kuhinji", "altSaves": 1, "tradeoff": "higiena in hitrost razdeljevanja"},
+    {"kw": ["ananas"], "item": "Rezine ananasa", "pack": "folija ali posodica (preveri!)", "g": 4, "measured": false, "alt": "rezanje v šolski kuhinji brez posamične embalaže", "altSaves": 1, "tradeoff": "več dela v kuhinji"}
   ]
 }
