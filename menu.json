@@ -1,47 +1,49 @@
 {
-  "week": "jedilnik MALICA - 19. 10. - 23. 10. 2026",
-  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-10-19.pdf",
+  "week": "jedilnik MALICA - 2. 11. - 6. 11. 2026",
+  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-11-2.pdf",
   "days": [
     {
       "n": "Ponedeljek",
-      "d": "2026-10-19",
+      "d": "2026-11-02",
       "items": [
-        "mesni burek (NV) mesni /skutni burek (N)",
-        "navadni tekoči jogurt/eko sadni navadni",
-        "3E malica v zdr.domu"
+        "focaccia rezine mocarele in pršuta",
+        "smoothie"
       ]
     },
     {
       "n": "Torek",
-      "d": "2026-10-20",
+      "d": "2026-11-03",
       "items": [
-        "šunka, sir, listi solate",
-        "puding"
+        "temna štručka (v,m) piščančja hrenovka",
+        "sadnočok.rezina"
       ]
     },
     {
       "n": "Sreda",
-      "d": "2026-10-21",
+      "d": "2026-11-04",
       "items": [
-        "ogrska salama, mlečni namaz",
-        "paprika po izb.",
-        "sadna skuta"
+        "temna makovka (v,m) šunka, hrenov namaz, jajce po izb.",
+        "van.puding"
       ]
     },
     {
       "n": "Četrtek",
-      "d": "2026-10-22",
+      "d": "2026-11-05",
       "items": [
-        "različni namazi",
-        "(tunin, mlečni, sadni…)",
-        "mini roglj., mleko"
+        "1.2.letnik goveji burger zelenjava po izbiri zelenjavni",
+        "3.4. letnik",
+        "kosmiči po izbiri, mini pz.špirala",
+        "mleko, jogurt"
       ]
     },
     {
       "n": "Petek",
-      "d": "2026-10-23",
+      "d": "2026-11-06",
       "items": [
-        "kolač z lešniki (NV 2 kos) S&V napitek (nar, sadni)"
+        "1.2.letnik kosmiči po izbiri, mini pz.špirala",
+        "mleko, jogurt",
+        "3.4. letnik",
+        "goveji burger zelenjava po izbiri zelenjavni"
       ]
     }
   ]
