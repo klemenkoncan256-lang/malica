@@ -1,49 +1,46 @@
 {
-  "week": "jedilnik MALICA - 2. 11. - 6. 11. 2026",
-  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-11-2.pdf",
+  "week": "jedilnik MALICA - 9. 11. - 13. 11. 2026",
+  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-11-9.pdf",
   "days": [
     {
       "n": "Ponedeljek",
-      "d": "2026-11-02",
+      "d": "2026-11-09",
       "items": [
-        "focaccia rezine mocarele in pršuta",
-        "smoothie"
+        "temna sriova štručka (v,m) pišč.prsi, sirni namaz",
+        "kumare, paprika po izb.",
+        "mlečna rezina"
       ]
     },
     {
       "n": "Torek",
-      "d": "2026-11-03",
+      "d": "2026-11-10",
       "items": [
-        "temna štručka (v,m) piščančja hrenovka",
-        "sadnočok.rezina"
+        "rezine mocarele",
+        "rukola po izbiri",
+        "sadna skuta"
       ]
     },
     {
       "n": "Sreda",
-      "d": "2026-11-04",
+      "d": "2026-11-11",
       "items": [
-        "temna makovka (v,m) šunka, hrenov namaz, jajce po izb.",
-        "van.puding"
+        "dlje vzhajane štručke (NV 2kos) mesni, mlečni, sadni namazi",
+        "rezine ananasa"
       ]
     },
     {
       "n": "Četrtek",
-      "d": "2026-11-05",
+      "d": "2026-11-12",
       "items": [
-        "1.2.letnik goveji burger zelenjava po izbiri zelenjavni",
-        "3.4. letnik",
-        "kosmiči po izbiri, mini pz.špirala",
-        "mleko, jogurt"
+        "temna blazinica (v,m) piščančji zrezek",
+        "listi solate"
       ]
     },
     {
       "n": "Petek",
-      "d": "2026-11-06",
+      "d": "2026-11-13",
       "items": [
-        "1.2.letnik kosmiči po izbiri, mini pz.špirala",
-        "mleko, jogurt",
-        "3.4. letnik",
-        "goveji burger zelenjava po izbiri zelenjavni"
+        "nav/sad.jogurt"
       ]
     }
   ]
