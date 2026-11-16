@@ -1,46 +1,54 @@
 {
-  "week": "jedilnik MALICA - 9. 11. - 13. 11. 2026",
-  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-11-9.pdf",
+  "week": "jedilnik MALICA - 16. 11. - 20. 11. 2026",
+  "source": "https://www.gimvic.org/delovanjesole/solske_sluzbe_in_solski_organi/solska_prehrana/files/jedilnik-M-2026-11-16-popr.pdf",
   "days": [
     {
       "n": "Ponedeljek",
-      "d": "2026-11-09",
+      "d": "2026-11-16",
       "items": [
-        "temna sriova štručka (v,m) pišč.prsi, sirni namaz",
-        "kumare, paprika po izb.",
-        "mlečna rezina"
+        "1.2. letnik rezine dlje vzhaj. kruha 1.2. kraški pršut **",
+        "tolminski sir **",
+        "navadni čvrsti jogurt **",
+        "3.4.letnik",
+        "mlečni gres *, mleko**"
       ]
     },
     {
       "n": "Torek",
-      "d": "2026-11-10",
+      "d": "2026-11-17",
       "items": [
-        "rezine mocarele",
-        "rukola po izbiri",
-        "sadna skuta"
+        "3.4. letnik rezine dlje vzhaj. kruha 3.4. kraški pršut **",
+        "tolminski sir **",
+        "navadni čvrsti jogurt **",
+        "1.2. letnik",
+        "mlečni gres *, mleko **"
       ]
     },
     {
       "n": "Sreda",
-      "d": "2026-11-11",
+      "d": "2026-11-18",
       "items": [
-        "dlje vzhajane štručke (NV 2kos) mesni, mlečni, sadni namazi",
-        "rezine ananasa"
+        "orehova, pehtranova potica (NV 2-3kos, N 1-2 kos po izb.)",
+        "mleko **"
       ]
     },
     {
       "n": "Četrtek",
-      "d": "2026-11-12",
+      "d": "2026-11-19",
       "items": [
-        "temna blazinica (v,m) piščančji zrezek",
-        "listi solate"
+        "temna dlje vzhajana štručka prekajena šunka, hrenov namaz",
+        "trdo kuhano jajce"
       ]
     },
     {
       "n": "Petek",
-      "d": "2026-11-13",
+      "d": "2026-11-20",
       "items": [
-        "nav/sad.jogurt"
+        "\"tradic.slovenski zajtrk za malico \"tradic.slovenski rezine dlje vzhajanega kruha *",
+        "med**",
+        "maslo **",
+        "jab. krhlji **, lešnikii **",
+        "mleko **"
       ]
     }
   ]
